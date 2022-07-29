@@ -4,39 +4,90 @@
 
 <head>
   <title>FCC Microservices</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png"
     type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
   <link href="/public/style.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
-  <div class="container">
+<body style="background-color:beige ;">
+  <h1>
+    FCC Microservices
+  </h1>
+  <p>A Compilation of APIs made for the FCC projects
+    <br>
+    <a href="https://github.com/shell-raiser/FCC-Microservices"> GitHub Repo</a>
 
-    <section>
-      <h2>API Project: File Metadata Microservice</h2>
+  </p>
+
+  <p>
+
+  </p>
+  <div class="container">
+    <section style="background-color: rgb(252, 216, 255); padding: 5px;">
+      <h3>Request Header Parser</h3>
+      <p>
+        <b> visit </b>[base url]/api/whoami
+        <br><br>
+        <b> Example Output:</b>
+        <br>
+        {"ipaddress":"159.20.14.100","language":"en-US,en;q=0.5",
+        "software":"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"}
+      </p>
+    </section>
+    <section style="background-color:rgb(154, 231, 231); padding: 5px;">
+      <h3>Timestamp Microservice </h3>
+      <p>
+        <b>Usage:</b> <br>
+        /api/2015-12-25<br>
+        /api/1451001600000<br>
+        /api (for current time)<br>
+        <br>
+        <b>Example Output:</b> <br>
+        {"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}
+      </p>
+
+    </section>
+    <section style="background-color: pink; padding: 5px;">
+      <h3>URL Shortener Microservice</h3>
+
+      <form action="api/shorturl" method="POST">
+        <fieldset>
+          <legend>URL Shortener</legend>
+          <label for="url_input">URL:</label>
+          <input id="url_input" type="text" name="url" placeholder="https://www.freecodecamp.org/" />
+          <input type="submit" value="POST URL" />
+        </fieldset>
+      </form>
+      <p>
+        <b> Example:</b> POST [project_url]/api/shorturl - https://www.google.com
+        <br>
+        <br> <b> Then visit</b>
+        <br> [this_project_url]/api/shorturl/{id}
+        <br> Which will redirect to ur original URL
+
+      </p>
+    </section>
+    <section style="background-color:rgb(154, 200, 201); padding: 5px;">
+      <h3>File Metadata Microservice</h3>
 
       <div class="view">
-        <h4 id="output"></h4>
+        <h1 class="title" id="output"></h1>
         <form enctype="multipart/form-data" method="POST" action="/api/fileanalyse">
           <input id="inputfield" type="file" name="upfile">
           <input id="button" type="submit" value="Upload">
         </form>
-      </div>
-  </div>
-  </section>
-  <section>
-    <h1>URL Shortener Microservice</h1>
 
-    <form action="api/shorturl" method="POST">
-      <fieldset>
-        <legend>URL Shortener</legend>
-        <label for="url_input">URL:</label>
-        <input id="url_input" type="text" name="url" placeholder="https://www.freecodecamp.org/" />
-        <input type="submit" value="POST URL" />
-      </fieldset>
-    </form>
-  </section>
+      </div>
+      <p>
+        When the file is posted to /api/fileanalyse <br>
+        A JSON Object is returned containing the Name, Type & Size of the file
+      </p>
+    </section>
+
+  </div>
+
 </body>
 
 </html>
