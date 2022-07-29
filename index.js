@@ -7,11 +7,21 @@ const storage = multer.memoryStorage()
 const upload = multer({ storage: storage })
 var app = express();
 
-app.use(cors());
+app.use(cors({ optionsSuccessStatus: 200 }));
+
 
 // use body parser
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
+
+
+
+
+// Request Header Parser
+app.get('/api/whoami', function(req, res) {
+  res.json({ ipaddress: req.headers.host, language: req.get('accept-language'), software: req.get('user-agent') });
+});
+
 
 
 
