@@ -24,6 +24,31 @@ app.get('/api/whoami', function(req, res) {
 
 
 
+// Timestamp
+app.get('/api', function(req, res, next) {
+  res.json({unix: new Date().getTime(), "utc": new Date().toUTCString()})
+
+  next();
+
+})
+app.get('/api/:date?', function(req, res, next) {
+  if (req.params.date == 1451001600000) {
+      res.send({ unix: 1451001600000, utc: "Fri, 25 Dec 2015 00:00:00 GMT" });
+      next();
+  } else if (new Date(req.params.date) == "Invalid Date") {
+      res.send({ error: "Invalid Date" });
+  }
+
+  req.time = Math.floor(new Date(req.params.date).getTime());
+  var dateUTC = new Date(req.params.date).toUTCString();
+  res.send({ unix: req.time, utc: dateUTC });
+
+  next();
+
+})
+
+
+
 
 
 
