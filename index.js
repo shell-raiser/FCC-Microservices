@@ -55,7 +55,7 @@ app.get('/api/:date?', function(req, res, next) {
 // URL Shortener
 var mongoose = require('mongoose');
 const mySecret = process.env['MONGO_URI']
-console.log(mySecret);
+// console.log(mySecret);
 mongoose.connect(mySecret, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
